@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/trips"
+  to = "/data/data.json"
+  status = 200
