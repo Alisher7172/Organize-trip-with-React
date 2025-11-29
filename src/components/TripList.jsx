@@ -53,13 +53,13 @@ function TripList() {
       <div className="filters">
         <button
           className="animate__animated animate__rubberBand"
-          onClick={() => setUrl("http://localhost:3000/trips")}
+          onClick={() => setUrl("/trips")}
         >
           All Trips
         </button>
         <button
           className="animate__animated animate__rubberBand"
-          onClick={() => setUrl("http://localhost:3000/trips?location=USA")}
+          onClick={() => setUrl("/trips?location=USA")}
         >
           America Trips
         </button>
