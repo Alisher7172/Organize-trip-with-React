@@ -36,9 +36,9 @@ function TripList() {
           <i>{error}</i>
         </div>
       )}
-      {trips && Array.isArray(trips) && (
+      {data && Array.isArray(data.trips) && (
         <ul>
-          {trips.map((trip) => (
+          {data.trips.map((trip) => (
             <li key={trip.id} className="animate__animated animate__bounce">
               <h2>
                 <i>{trip.title}</i>
