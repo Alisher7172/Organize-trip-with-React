@@ -7,8 +7,8 @@ import { useFetch,  } from '../hooks/useFetch';
 function TripList() {
     // const [trips, setTrips] = useState([]);
     const [url, setUrl] = useState('/trips');
-    const { data: trips, isPending, error } = useFetch(url) ;
-    console.log(trips);
+    const { data, isPending, error } = useFetch(url) ;
+    console.log(data);
 
     // const fetchTrips = useCallback(async () => {
     //     const response = await fetch(url);
