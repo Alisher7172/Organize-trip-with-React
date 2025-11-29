@@ -1,17 +1,25 @@
-import './TripList.css';
+// style 
+import  './TripList.css';
 
 import { useState } from "react";
-import { useFetch } from '../hooks/useFetch';
+import { useFetch,  } from '../hooks/useFetch';
 
 function TripList() {
-    // fetch full list once, then filter on the client
-    const { data, isPending, error } = useFetch('/trips');
-    const [locationFilter, setLocationFilter] = useState(null);
+    // const [trips, setTrips] = useState([]);
+    const [url, setUrl] = useState('/trips');
+    const { data, isPending, error } = useFetch(url) ;
+    console.log(data);
 
-    const trips = Array.isArray(data?.trips) ? data.trips : [];
-    const filteredTrips = locationFilter
-        ? trips.filter(t => String(t.location).toLowerCase() === String(locationFilter).toLowerCase())
-        : trips;
+    // const fetchTrips = useCallback(async () => {
+    //     const response = await fetch(url);
+    //     const data = await response.json();
+    //     setTrips(data);
+    // }, [url]);
+    // useEffect(() => {
+    //     fetchTrips();
+    // }, [fetchTrips]);
+    
+   
 
   return (
     <div className="trip-list">
@@ -28,9 +36,9 @@ function TripList() {
           <i>{error}</i>
         </div>
       )}
-      {filteredTrips.length > 0 ? (
+      {data && Array.isArray(data.trips) && (
         <ul>
-          {filteredTrips.map((trip) => (
+          {data.trips.map((trip) => (
             <li key={trip.id} className="animate__animated animate__bounce">
               <h2>
                 <i>{trip.title}</i>
@@ -41,19 +49,17 @@ function TripList() {
             </li>
           ))}
         </ul>
-      ) : (
-        !isPending && <div className="no-results"><i>No trips found</i></div>
       )}
       <div className="filters">
         <button
           className="animate__animated animate__rubberBand"
-          onClick={() => setLocationFilter(null)}
+          onClick={() => setUrl("/trips")}
         >
           All Trips
         </button>
         <button
           className="animate__animated animate__rubberBand"
-          onClick={() => setLocationFilter("USA")}
+          onClick={() => setUrl("/trips?location=USA")}
         >
           America Trips
         </button>
@@ -62,4 +68,4 @@ function TripList() {
   );
 }
 
-export default TripList;
+    export default TripList
