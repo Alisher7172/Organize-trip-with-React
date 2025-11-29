@@ -6,7 +6,7 @@ import { useFetch,  } from '../hooks/useFetch';
 
 function TripList() {
     // const [trips, setTrips] = useState([]);
-    const [url, setUrl] = useState('http://localhost:3000/trips');
+    const [url, setUrl] = useState('/trips');
     const { data: trips, isPending, error } = useFetch(url) ;
     console.log(trips);
 
