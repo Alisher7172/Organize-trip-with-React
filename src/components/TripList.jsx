@@ -27,7 +27,7 @@ function TripList() {
         {isPending && <div className='loading animate__animated animate__heartBeat'><i>Loading Trips...</i></div>}
         {error && <div className='error animate__animated animate__shakeX'><i>{error}</i></div>}
         <ul>
-            {trips && trips.map(trip => (
+            {trips && Array.isArray(trips) && trips.map(trip => (
                 <li key={trip.id} className='animate__animated animate__bounce'>
                     <h2><i>{trip.title}</i></h2>
                     <p><i>{trip.price}</i></p>
